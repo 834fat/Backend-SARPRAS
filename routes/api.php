@@ -44,7 +44,7 @@ Route::prefix('admin')->group(function () {
         Route::get('/permissions', [\App\Http\Controllers\Api\Admin\PermissionController::class, 'index'])->middleware('permission:permission.index');
 
         //user
-        Route::apiResource('/roles', App\Http\Controllers\Api\Admin\RoleController::class)->middleware('permission:user.index|user.store|user.update|user.delete');
+        Route::apiResource('/users', App\Http\Controllers\Api\Admin\UserController::class)->middleware('permission:users.index|users.store|users.update|users.delete');
         
     });
 });

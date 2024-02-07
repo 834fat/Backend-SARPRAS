@@ -29,7 +29,7 @@ class UserTableSeeder extends Seeder
         ]);
         $user->assignRole('user');
 
-        $role = Role::find(1);
+        $role = Role::find(1)        ;
         $permissions = Permission::all();
 
         $role->syncPermissions($permissions);

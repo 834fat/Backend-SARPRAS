@@ -14,16 +14,8 @@ class DashboardController extends Controller
             // Jumlah total pengguna
             $countUsers = User::count();
 
-            // Jumlah siswa
-            $countSiswa = User::where('role', 'siswa')->count();
-
-            // Jumlah pembimbing
-            $countPembimbing = User::where('role', 'pembimbing')->count();
-
             return response()->json([
                 'countUsers' => $countUsers,
-                'countSiswa' => $countSiswa,
-                'countPembimbing' => $countPembimbing,
             ], 200);
         } catch (\Exception $e) {
             return response()->json(['error' => 'Error fetching data.'], 500);
