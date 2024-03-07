@@ -2,6 +2,9 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Api\DataBarangController;
+use App\Http\Controllers\Api\DataRuanganController;
+use App\Http\Controllers\Api\PeminjamanController;
 use App\Http\Controllers\Api\Admin\DashboardController;
 use App\Http\Controllers\Api\Admin\RoleController;
 use App\Http\Controllers\Api\Admin\UserController;
@@ -21,6 +24,27 @@ use App\Http\Controllers\Api\Admin\PermissionController;
 
 // Route Login
 Route::post('/login', [App\Http\Controllers\Api\Auth\LoginController::class, 'index']);
+
+// Route Data Barang
+Route::post('/data_barangs/create', [App\Http\Controllers\Api\DataBarangController::class, 'create'])->name('data_barangs.create');
+Route::get('/data_barangs/show', [App\Http\Controllers\Api\DataBarangController::class, 'show'])->name('data_barangs.show');
+Route::get('/data_barangs/{id}', [App\Http\Controllers\Api\DataBarangController::class, 'showId'])->name('data_barangs.showId');
+Route::put('/data_barangs/update/{id}', [App\Http\Controllers\Api\DataBarangController::class, 'update']);
+Route::delete('/data_barangs/destroy/{id}', [App\Http\Controllers\Api\DataBarangController::class, 'destroy']);
+
+// Route Data Ruangan
+Route::post('/data_ruangans/create', [App\Http\Controllers\Api\DataRuanganController::class, 'create'])->name('data_ruangans.create');
+Route::get('/data_ruangans/show', [App\Http\Controllers\Api\DataRuanganController::class, 'show'])->name('data_ruangans.show');
+Route::get('/data_ruangans/{id}', [App\Http\Controllers\Api\DataRuanganController::class, 'showId'])->name('data_ruangans.showId');
+Route::put('/data_ruangans/update/{id}', [App\Http\Controllers\Api\DataRuanganController::class, 'update']);
+Route::delete('/data_ruangans/destroy/{id}', [App\Http\Controllers\Api\DataRuanganController::class, 'destroy']);
+
+// Route Pinjam Barang
+Route::post('/peminjaman', [App\Http\Controllers\Api\PeminjamanController::class, 'create']);
+
+// Route untuk barang yang tersedia
+Route::get('/barang_tersedia', [App\Http\Controllers\Api\BarangTersediaController::class, 'index']);
+
 
 
 // group route with middleware "auth"
@@ -44,7 +68,7 @@ Route::prefix('admin')->group(function () {
         Route::get('/permissions', [\App\Http\Controllers\Api\Admin\PermissionController::class, 'index'])->middleware('permission:permission.index');
 
         //user
-        Route::apiResource('/roles', App\Http\Controllers\Api\Admin\RoleController::class)->middleware('permission:user.index|user.store|user.update|user.delete');
+        Route::apiResource('/users', App\Http\Controllers\Api\Admin\UserController::class)->middleware('permission:users.index|users.store|users.update|users.delete');
         
     });
 });
