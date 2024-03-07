@@ -42,7 +42,11 @@ class PermissionTableSeeder extends Seeder
         Permission::firstOrCreate(['name' => 'users.edit', 'guard_name' => 'api']);
         Permission::firstOrCreate(['name' => 'users.delete', 'guard_name' => 'api']);
 
+<<<<<<< HEAD
         Permission::firstOrCreate(['name' => 'permission.index', 'guard_name' => 'api']); 
+=======
+        Permission::create(['name' => 'permission.index', 'guard_name' => 'api']); 
+>>>>>>> 072bc31115990992cddded610379a91391a72653
 
         Permission::firstOrCreate(['name' => 'roles.index', 'guard_name' => 'api']);
         Permission::firstOrCreate(['name' => 'roles.create', 'guard_name' => 'api']);

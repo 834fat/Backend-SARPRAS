@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\http\Controllers\HomeController;
+use App\http\Controllers\DataBarangController;
 
 /*
 |--------------------------------------------------------------------------
@@ -20,5 +21,9 @@ Route::get('/', function () {
 
 Route::get('home', [HomeController::class, 'index'])->name('home');
 Route::get('features', [HomeController::class, 'features'])->name('features');
+<<<<<<< HEAD
+=======
+Route::resource('DataBarang', DataBarangController::class);
+>>>>>>> 072bc31115990992cddded610379a91391a72653
 
  
